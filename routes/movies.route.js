@@ -17,8 +17,6 @@ router.get("/:id", getSingleMoviesController);
 
 router.put("/:id", updateMovieController);
 
-router.delete("/:id");
-
-router.get("/getimage/:id", deleteMovieController);
+router.delete("/:id", deleteMovieController);
 
 module.exports = router;
