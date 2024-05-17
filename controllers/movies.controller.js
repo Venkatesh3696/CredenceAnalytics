@@ -7,7 +7,6 @@ const {
 const createMovieController = async (req, res) => {
   try {
     const { name, description } = req.fields;
-    console.log(name);
     const { image } = req.files;
     switch (true) {
       case !name:
@@ -17,9 +16,7 @@ const createMovieController = async (req, res) => {
       case !image:
         return res.status(500).send({ error: "image is required!" });
     }
-    console.log(image);
     const imagePublicId = await uploadImage(image.path);
-    console.log("imageResult", imagePublicId);
 
     const movie = await Movie.create({ name, description, imagePublicId });
 
@@ -48,7 +45,6 @@ const getAllMoviesController = async (req, res) => {
 
 const getSingleMoviesController = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
   try {
     const movie = await Movie.findById(id);
 
